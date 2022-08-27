@@ -13,3 +13,7 @@ Next.js を使った Web サイトの構築メモ
 ## 静的解析と自動フォーマットを行う設定
 
 [setting-auto-lint-and-format.md](./.documents/setting-auto-lint-and-format.md)
+
+## Storybook のインストール
+
+[setup_storybook.md](./.documents/setup_storybook.md)
