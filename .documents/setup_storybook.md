@@ -68,7 +68,7 @@ npm install --save-dev @mdx-js/react
 +     ];
 +
 +     return config;
-+　　　　　　　　　　　　　　　　　　　　　   },
++   },
     framework: "@storybook/react",
     core: {
       builder: "@storybook/builder-webpack5",
@@ -77,3 +77,74 @@ npm install --save-dev @mdx-js/react
 ```
 
 参考：https://storybook.js.org/docs/react/configure/overview#configure-your-storybook-project
+
+## 使ってみる
+
+例えば、渡された SNS の種類に応じて、`Font Awesome`で包んで返すコンポーネントを作る。
+
+`/src/components/atoms/SocialIcon/index.tsx`
+
+```tsx
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
+
+export type SocialIconProps = {
+  media: "twitter" | "facebook";
+};
+
+export default function SocialIcon(props: SocialIconProps) {
+  const { media } = props;
+  let iconProp: IconDefinition;
+
+  switch (media) {
+    case "twitter":
+      iconProp = faTwitter;
+      break;
+    case "facebook":
+      iconProp = faFacebook;
+      break;
+  }
+
+  return <FontAwesomeIcon icon={iconProp} />;
+}
+```
+
+同じ階層に`index.stories.tsx`を作成する。
+
+`/src/components/atoms/SocialIcon/index.tsx`
+
+```tsx
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import SocialIcon from "./index";
+
+export default {
+  title: "Design System/Atoms/SocialIcon",
+  component: SocialIcon,
+} as ComponentMeta<typeof SocialIcon>;
+
+const Template: ComponentStory<typeof SocialIcon> = (args) => (
+  <SocialIcon {...args} />
+);
+
+export const Twitter = Template.bind({});
+
+Twitter.args = {
+  media: "twitter",
+};
+
+export const Facebook = Template.bind({});
+
+Facebook.args = {
+  media: "facebook",
+};
+```
+
+```bash
+// ストーリーブックを起動
+npm run storybook
+```
+
+こんな感じで表示される
+
+![](./storybook_sample.png)

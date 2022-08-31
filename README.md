@@ -17,3 +17,7 @@ Next.js を使った Web サイトの構築メモ
 ## Storybook のインストール
 
 [setup_storybook.md](./.documents/setup_storybook.md)
+
+## Font Awesome のインストール
+
+[setting_fontawesome.md](./.documents/setting_fontawesome.md)
