@@ -12,12 +12,6 @@ npx sb@latest init
 npm run storybook
 ```
 
-## アセットファイルの格納場所を作成する
-
-```bash
-mkdir .storybook/public
-```
-
 ## アドオンを追加
 
 [TypeScript と React/Next.js でつくる実践 Web アプリケーション開発](https://amzn.to/3CyPF89) を参考にした
@@ -51,7 +45,7 @@ npm install --save-dev @mdx-js/react
       "@storybook/addon-interactions",
 +     "@storybook/addon-postcss",
     ],
-+   staticDirs: ["public"],
++   staticDirs: ["../public"],
 +   babel: async (options) => ({
 +     ...options,
 +     plugins: [
@@ -77,6 +71,23 @@ npm install --save-dev @mdx-js/react
 ```
 
 参考：https://storybook.js.org/docs/react/configure/overview#configure-your-storybook-project
+
+## `next/image`を使えるようにする
+
+`.storybook/preview.js`に以下を追加
+
+```diff
++ import * as NextImage from "next/image";
+
+---
+
++ const OriginalNextImage = NextImage.default;
+
++ Object.defineProperty(NextImage, "default", {
++   configurable: true,
++   value: (props) => <OriginalNextImage {...props} unoptimized />,
++ });
+```
 
 ## 使ってみる
 
