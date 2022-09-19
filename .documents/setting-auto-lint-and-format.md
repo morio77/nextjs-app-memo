@@ -28,8 +28,8 @@ npm install -D prettier eslint-config-prettier
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
- -  "lint": "next lint"
- +  "lint": "next lint --dir src"
+-   "lint": "next lint"
++   "lint": "next lint --dir src"
   },
 ```
 
