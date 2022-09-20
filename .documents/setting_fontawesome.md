@@ -12,7 +12,7 @@ npm install @fortawesome/free-brands-svg-icons
 
 ## グローバル CSS 適用
 
-`_app.js`を修正
+`_app.tsx`を修正
 
 ```diff
     import "../styles/globals.css";
