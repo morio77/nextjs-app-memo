@@ -21,6 +21,7 @@ npm run storybook
 npm install --save-dev @storybook/addon-postcss tsconfig-paths-webpack-plugin @babel/plugin-proposal-class-properties @babel/plugin-proposal-private-methods @babel/plugin-proposal-private-property-in-object @mdx-js/react
 
 # それぞれインストールする場合は以下
+npm install --save-dev storybook-css-modules-preset
 npm install --save-dev @storybook/addon-postcss
 npm install --save-dev tsconfig-paths-webpack-plugin
 npm install --save-dev @babel/plugin-proposal-class-properties
@@ -44,6 +45,7 @@ npm install --save-dev @mdx-js/react
       "@storybook/addon-essentials",
       "@storybook/addon-interactions",
 +     "@storybook/addon-postcss",
++     "storybook-css-modules-preset",
     ],
 +   staticDirs: ["../public"],
 +   babel: async (options) => ({
